@@ -5,7 +5,7 @@ status: draft
 created: 2026-10-29
 updated: 2026-10-29
 related: docs/requirements.md
-active_task: T-03
+active_task: T-04
 rag: one `## T-NN` block per task; read only the active block + its REQ entries
 ---
 
@@ -15,7 +15,7 @@ rag: one `## T-NN` block per task; read only the active block + its REQ entries
 |---|---|---|---|---|
 | T-01 | Hardware | Fix LED group drive current | REQ-LED-05, REQ-LED-06 | done |
 | T-02 | Docs | Correct current figures in architecture.md | REQ-LED-05, REQ-LED-06 | done |
-| T-03 | Firmware | Create sketch from architecture §6 | REQ-INP-01..03, REQ-LED-02..04, REQ-HAP-01..05, REQ-FW-01, REQ-FW-03, REQ-PWR-01, REQ-PWR-04 | todo |
+| T-03 | Firmware | Create sketch from architecture §6 | REQ-INP-01..03, REQ-LED-02..04, REQ-HAP-01..05, REQ-FW-01, REQ-FW-03, REQ-PWR-01, REQ-PWR-04 | done |
 | T-04 | Firmware | Add non-blocking debounce | REQ-FW-02, REQ-FW-04, REQ-INP-03 | todo |
 | T-05 | Firmware | Remove relay boot glitch | REQ-SAF-01, REQ-SAF-02, REQ-REL-02 | todo |
 | T-06 | Hardware | Wire 8 switches | REQ-INP-01, REQ-INP-02 | todo |
@@ -48,7 +48,7 @@ rag: one `## T-NN` block per task; read only the active block + its REQ entries
 - done-when: no figure in architecture.md contradicts the T-01 calculation; `updated` bumped in requirements.md
 
 ## T-03 · Create sketch from architecture §6
-- [ ] status: todo
+- [x] status: done
 - area: Firmware
 - req: REQ-INP-01..03, REQ-LED-02..04, REQ-HAP-01..05, REQ-FW-01, REQ-FW-03, REQ-PWR-01, REQ-PWR-04
 - action: add `firmware/paladar/paladar.ino` with the §6 code
