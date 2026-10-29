@@ -5,7 +5,7 @@ status: draft
 created: 2026-10-29
 updated: 2026-10-29
 related: docs/requirements.md
-active_task: T-04
+active_task: T-05
 rag: one `## T-NN` block per task; read only the active block + its REQ entries
 ---
 
@@ -16,7 +16,7 @@ rag: one `## T-NN` block per task; read only the active block + its REQ entries
 | T-01 | Hardware | Fix LED group drive current | REQ-LED-05, REQ-LED-06 | done |
 | T-02 | Docs | Correct current figures in architecture.md | REQ-LED-05, REQ-LED-06 | done |
 | T-03 | Firmware | Create sketch from architecture §6 | REQ-INP-01..03, REQ-LED-02..04, REQ-HAP-01..05, REQ-FW-01, REQ-FW-03, REQ-PWR-01, REQ-PWR-04 | done |
-| T-04 | Firmware | Add non-blocking debounce | REQ-FW-02, REQ-FW-04, REQ-INP-03 | todo |
+| T-04 | Firmware | Add non-blocking debounce | REQ-FW-02, REQ-FW-04, REQ-INP-03 | done |
 | T-05 | Firmware | Remove relay boot glitch | REQ-SAF-01, REQ-SAF-02, REQ-REL-02 | todo |
 | T-06 | Hardware | Wire 8 switches | REQ-INP-01, REQ-INP-02 | todo |
 | T-07 | Hardware | Assemble interspersed LED matrix | REQ-LED-01, REQ-LED-07 | todo |
@@ -55,7 +55,7 @@ rag: one `## T-NN` block per task; read only the active block + its REQ entries
 - done-when: compiles for Arduino Nano (ATmega328P) with no warnings
 
 ## T-04 · Add non-blocking debounce
-- [ ] status: todo
+- [x] status: done
 - area: Firmware
 - req: REQ-FW-02, REQ-FW-04, REQ-INP-03
 - depends: T-03

@@ -29,14 +29,26 @@ unsigned long motorStartTime = 0;
 bool motorRunning            = false;
 bool lastReflexInputState    = false;
 
-void setup() {
-  const uint8_t inputPins[] = {
-    BTN_SWEET_1, BTN_SWEET_2, BTN_SALTY_1, BTN_SALTY_2,
-    BTN_SOUR_1, BTN_SOUR_2, BTN_BITTER_1, BTN_BITTER_2
-  };
+// Debounce (REQ-FW-02): accept change only after stable for DEBOUNCE_MS
+const unsigned long DEBOUNCE_MS = 30;
+const uint8_t NUM_SWITCHES = 8;
+const uint8_t INPUT_PINS[NUM_SWITCHES] = {
+  BTN_SWEET_1, BTN_SWEET_2, BTN_SALTY_1, BTN_SALTY_2,
+  BTN_SOUR_1, BTN_SOUR_2, BTN_BITTER_1, BTN_BITTER_2
+};
+bool rawLast[NUM_SWITCHES];              // true = pressed (LOW)
+bool debounced[NUM_SWITCHES];            // true = pressed (LOW)
+unsigned long lastChange[NUM_SWITCHES];
 
-  for (uint8_t i = 0; i < 8; i++) {
-    pinMode(inputPins[i], INPUT_PULLUP);
+void setup() {
+  for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+    pinMode(INPUT_PINS[i], INPUT_PULLUP);
+  }
+  unsigned long now = millis();
+  for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+    rawLast[i] = (digitalRead(INPUT_PINS[i]) == LOW);
+    debounced[i] = false;  // start released
+    lastChange[i] = now;
   }
 
   pinMode(LED_SWEET, OUTPUT);
@@ -56,11 +68,23 @@ void setup() {
 void loop() {
   unsigned long currentMillis = millis();
 
-  // Read button inputs (active LOW)
-  bool sweetActive  = (digitalRead(BTN_SWEET_1) == LOW)  || (digitalRead(BTN_SWEET_2) == LOW);
-  bool saltyActive  = (digitalRead(BTN_SALTY_1) == LOW)  || (digitalRead(BTN_SALTY_2) == LOW);
-  bool sourActive   = (digitalRead(BTN_SOUR_1) == LOW)   || (digitalRead(BTN_SOUR_2) == LOW);
-  bool bitterActive = (digitalRead(BTN_BITTER_1) == LOW) || (digitalRead(BTN_BITTER_2) == LOW);
+  // Debounce each switch (active LOW), non-blocking
+  for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+    bool raw = (digitalRead(INPUT_PINS[i]) == LOW);
+    if (raw != rawLast[i]) {
+      rawLast[i] = raw;
+      lastChange[i] = currentMillis;
+    }
+    if (raw != debounced[i] && (currentMillis - lastChange[i] >= DEBOUNCE_MS)) {
+      debounced[i] = raw;
+    }
+  }
+
+  // Taste active if either debounced switch is pressed
+  bool sweetActive  = debounced[0] || debounced[1];
+  bool saltyActive  = debounced[2] || debounced[3];
+  bool sourActive   = debounced[4] || debounced[5];
+  bool bitterActive = debounced[6] || debounced[7];
 
   // Drive LED groups
   digitalWrite(LED_SWEET, sweetActive ? HIGH : LOW);
