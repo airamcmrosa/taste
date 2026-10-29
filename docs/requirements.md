@@ -1,6 +1,6 @@
 ---
 title: Project Paladar — Requirements (EARS)
-version: 0.1.0
+version: 0.1.1
 status: draft
 created: 2026-10-29
 updated: 2026-10-29
@@ -8,6 +8,9 @@ source: docs/architecture.md
 owner: Maria Rosa
 related: docs/tasks.md
 changelog:
+  - version: 0.1.1
+    date: 2026-10-29
+    change: REQ-LED-01 series resistor 220 Ω → 680 Ω to match T-01 current design.
   - version: 0.1.0
     date: 2026-10-29
     change: Initial EARS requirements derived from architecture.md; added corrective REQ-LED-05/06 (pin current) and REQ-FW-02 (debounce).
@@ -28,7 +31,7 @@ Each requirement is one testable sentence. `Src` = section of `docs/architecture
 ## LED — Visual feedback
 | ID | Pattern | Requirement | Src |
 |---|---|---|---|
-| REQ-LED-01 | Ubiquitous | The system shall provide 20 LEDs, 5 per taste, each with its own 220 Ω series resistor. | §2 |
+| REQ-LED-01 | Ubiquitous | The system shall provide 20 LEDs, 5 per taste, each with its own 680 Ω series resistor. | §2 |
 | REQ-LED-02 | Ubiquitous | The system shall drive each taste's LED group from one output: Sweet D10, Salty D11, Sour D12, Bitter A0. | §3 |
 | REQ-LED-03 | State | While a taste is active, the system shall drive its LED output HIGH. | §6 |
 | REQ-LED-04 | State | While a taste is inactive, the system shall drive its LED output LOW. | §6 |

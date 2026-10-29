@@ -5,7 +5,7 @@ status: draft
 created: 2026-10-29
 updated: 2026-10-29
 related: docs/requirements.md
-active_task: T-02
+active_task: T-03
 rag: one `## T-NN` block per task; read only the active block + its REQ entries
 ---
 
@@ -14,7 +14,7 @@ rag: one `## T-NN` block per task; read only the active block + its REQ entries
 | ID | Area | Title | Req | Status |
 |---|---|---|---|---|
 | T-01 | Hardware | Fix LED group drive current | REQ-LED-05, REQ-LED-06 | done |
-| T-02 | Docs | Correct current figures in architecture.md | REQ-LED-05, REQ-LED-06 | todo |
+| T-02 | Docs | Correct current figures in architecture.md | REQ-LED-05, REQ-LED-06 | done |
 | T-03 | Firmware | Create sketch from architecture §6 | REQ-INP-01..03, REQ-LED-02..04, REQ-HAP-01..05, REQ-FW-01, REQ-FW-03, REQ-PWR-01, REQ-PWR-04 | todo |
 | T-04 | Firmware | Add non-blocking debounce | REQ-FW-02, REQ-FW-04, REQ-INP-03 | todo |
 | T-05 | Firmware | Remove relay boot glitch | REQ-SAF-01, REQ-SAF-02, REQ-REL-02 | todo |
@@ -40,7 +40,7 @@ rag: one `## T-NN` block per task; read only the active block + its REQ entries
   - follow-ups: T-02 updates BOM/§1/§3 (220Ω→680Ω, ~20 mA→~22 mA); T-10 measures real pin current
 
 ## T-02 · Correct current figures in architecture.md
-- [ ] status: todo
+- [x] status: done
 - area: Docs
 - req: REQ-LED-05, REQ-LED-06
 - depends: T-01

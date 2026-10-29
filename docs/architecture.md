@@ -13,7 +13,7 @@ The demonstrator employs two galvanically isolated power domains sharing an opti
 |  [USB 5V Supply] ───> Arduino Nano 5V Bus ───+───> [8x Push Buttons]            |
 |                                              │     (D2 - D9, INPUT_PULLUP)      |
 |                                              │                                  |
-|                                              +───> [20x LEDs via 220Ω Resistors]|
+|                                              +───> [20x LEDs via 680Ω Resistors]|
 |                                              │     (D10 - D12, A0)              |
 |                                              │                                  |
 |                                              +───> [Relay Logic VCC / GND]      |
@@ -40,7 +40,7 @@ The demonstrator employs two galvanically isolated power domains sharing an opti
 * **Microcontroller:** 1x Arduino Nano (Microchip ATmega328P, 16 MHz, 5V logic).
 * **Operator Inputs:** 8x Momentary tactile switches with integrated plastic caps (2 buttons per taste category)[cite: 3].
 * **Optical Receptors:** 20x 5mm standard through-hole LEDs (5x Sweet, 5x Salty, 5x Sour, 5x Bitter).
-* **Current-Limiting Resistors:** 20x 220Ω (1/4W) carbon/metal film resistors (one discrete resistor per LED).
+* **Current-Limiting Resistors:** 20x 680Ω (1/4W) carbon/metal film resistors (one discrete resistor per LED).
 * **Isolation & Relay Stage:** 1x Single-channel 5V optocoupled relay module (`SRD-05VDC-SL-C`)[cite: 2].
 * **Haptic Actuator:** 1x 1.5V sub-miniature DC coreless motor with an eccentric rotating mass (ERM)[cite: 1].
 * **Power Units:**
@@ -70,10 +70,10 @@ Analog pins `A0` and `A1` are mapped as digital output lines.
 
 | Pin | Controlled Element | Electrical Circuit | Maximum Current Draw | Output Active State |
 |---|---|---|---|---|
-| **D10** | Sweet Receptors | 5x parallel branches (each branch: 220Ω + LED) | ~20 mA total | HIGH |
-| **D11** | Salty Receptors | 5x parallel branches (each branch: 220Ω + LED) | ~20 mA total | HIGH |
-| **D12** | Sour Receptors | 5x parallel branches (each branch: 220Ω + LED) | ~20 mA total | HIGH |
-| **A0** | Bitter Receptors | 5x parallel branches (each branch: 220Ω + LED) | ~20 mA total | HIGH |
+| **D10** | Sweet Receptors | 5x parallel branches (each branch: 680Ω + LED) | ~22 mA total | HIGH |
+| **D11** | Salty Receptors | 5x parallel branches (each branch: 680Ω + LED) | ~22 mA total | HIGH |
+| **D12** | Sour Receptors | 5x parallel branches (each branch: 680Ω + LED) | ~22 mA total | HIGH |
+| **A0** | Bitter Receptors | 5x parallel branches (each branch: 680Ω + LED) | ~22 mA total | HIGH |
 | **A1** | Relay Signal (`IN`) | Logic optocoupler input[cite: 2] | < 5 mA | LOW (Active LOW)[cite: 2] |
 
 ---
