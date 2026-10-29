@@ -5,7 +5,7 @@ status: draft
 created: 2026-10-29
 updated: 2026-10-29
 related: docs/requirements.md
-active_task: T-05
+active_task: T-06
 rag: one `## T-NN` block per task; read only the active block + its REQ entries
 ---
 
@@ -17,7 +17,7 @@ rag: one `## T-NN` block per task; read only the active block + its REQ entries
 | T-02 | Docs | Correct current figures in architecture.md | REQ-LED-05, REQ-LED-06 | done |
 | T-03 | Firmware | Create sketch from architecture §6 | REQ-INP-01..03, REQ-LED-02..04, REQ-HAP-01..05, REQ-FW-01, REQ-FW-03, REQ-PWR-01, REQ-PWR-04 | done |
 | T-04 | Firmware | Add non-blocking debounce | REQ-FW-02, REQ-FW-04, REQ-INP-03 | done |
-| T-05 | Firmware | Remove relay boot glitch | REQ-SAF-01, REQ-SAF-02, REQ-REL-02 | todo |
+| T-05 | Firmware | Remove relay boot glitch | REQ-SAF-01, REQ-SAF-02, REQ-REL-02 | done |
 | T-06 | Hardware | Wire 8 switches | REQ-INP-01, REQ-INP-02 | todo |
 | T-07 | Hardware | Assemble interspersed LED matrix | REQ-LED-01, REQ-LED-07 | todo |
 | T-08 | Hardware | Wire relay and isolated motor | REQ-REL-01, REQ-REL-03, REQ-PWR-02, REQ-PWR-03 | todo |
@@ -63,7 +63,7 @@ rag: one `## T-NN` block per task; read only the active block + its REQ entries
 - done-when: simulated bounce under `DEBOUNCE_MS` produces no LED or relay change; no `delay()` in code
 
 ## T-05 · Remove relay boot glitch
-- [ ] status: todo
+- [x] status: done
 - area: Firmware
 - req: REQ-SAF-01, REQ-SAF-02, REQ-REL-02
 - depends: T-03

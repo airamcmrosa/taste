@@ -51,18 +51,21 @@ void setup() {
     lastChange[i] = now;
   }
 
-  pinMode(LED_SWEET, OUTPUT);
-  pinMode(LED_SALTY, OUTPUT);
-  pinMode(LED_SOUR, OUTPUT);
-  pinMode(LED_BITTER, OUTPUT);
+  // Initial Safe States: write the latch BEFORE enabling the output driver so
+  // pins never glitch to the PORT default (LOW). Relay is active-LOW, so A1
+  // must be HIGH (inactive) first to avoid a boot click (REQ-SAF-01,
+  // REQ-SAF-02, REQ-REL-02); LEDs are LOW from the moment they are outputs.
+  digitalWrite(RELAY_PIN, !RELAY_ACTIVE_LEVEL);
   pinMode(RELAY_PIN, OUTPUT);
 
-  // Initial Safe States
   digitalWrite(LED_SWEET, LOW);
   digitalWrite(LED_SALTY, LOW);
   digitalWrite(LED_SOUR, LOW);
   digitalWrite(LED_BITTER, LOW);
-  digitalWrite(RELAY_PIN, !RELAY_ACTIVE_LEVEL);
+  pinMode(LED_SWEET, OUTPUT);
+  pinMode(LED_SALTY, OUTPUT);
+  pinMode(LED_SOUR, OUTPUT);
+  pinMode(LED_BITTER, OUTPUT);
 }
 
 void loop() {
