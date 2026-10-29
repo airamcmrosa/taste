@@ -1,7 +1,7 @@
 ---
 name: implementer
 description: Implements code/doc changes for one task slice given by the coordinator. No shell, no git.
-tools: Read, Write, Grep, Glob
+tools: Read, Write, Edit, Grep, Glob
 disallowedTools: Bash(git commit:*), Bash(git push:*), Bash(git:*)
 ---
 You implement exactly the slice the coordinator hands you (snippets + expected outputs).
